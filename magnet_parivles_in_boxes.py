@@ -38,3 +38,8 @@ def doubles(maxk, maxn):
     print(i_sum)
     return i_sum
 doubles(10,10000)
+
+
+
+ss = "1111112"
+print(int(ss[-1]))
