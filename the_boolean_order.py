@@ -27,8 +27,9 @@ Test.assert_equals(solve("ttftfftft","|&^&&||^"),851)
 Test.assert_equals(solve("ttftfftftf","|&^&&||^&"),2434)
 """
 
-def solve(s,ops):
-    replaced_c = s.replace("t",True)
+
+def solve(s, ops):
+    replaced_c = s.replace("t", True)
     print(replaced_c)
 
 
@@ -37,6 +38,7 @@ def AND(a, b):
         return True
     else:
         return False
+
 
 def OR(a, b):
     if a == 1:
@@ -47,11 +49,22 @@ def OR(a, b):
         return False
 
 
-def XOR (a, b):
+def XOR(a, b):
     if a != b:
         return 1
     else:
         return 0
 
 
-solve("tft","^&")
+#solve("tft", "^&")
+
+
+
+def this_is_an_example (*aqrgs, **kwargs) :
+
+    print(aqrgs)
+    print(**kwargs)
+
+this = {1:"denis"}
+this_is_an_example(5,7,this)
+
