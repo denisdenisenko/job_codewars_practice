@@ -1,3 +1,4 @@
+import functools
 """
 For a given list [x1, x2, x3, ..., xn] compute the last (decimal)
 digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
@@ -40,19 +41,21 @@ for test_input, test_output in test_data:
 """
 
 
+#@functools.lru_cache(maxsize=None)
 def last_digit(lst):
-    sum = 1
-    if len(lst) == 0:
-        return sum
-    return (lst[0] ** lst_digit_help(0, lst[0:]))
-    pass
+    if len(lst) == 1:
+        return lst[0]
+    return (lst[0] ** last_digit_help(0, lst[1:]))
 
 
-def lst_digit_help(index, lst):
+#@functools.lru_cache(maxsize=None)
+def last_digit_help(index, lst):
     if len(lst) == 1:
         return lst[0]
     index += 1
-    return lst[0] ** lst_digit_help(index, lst[1:])
+    return lst[0] ** (last_digit_help(index, lst[1:]))
 
 
-last_digit([7, 6, 21])
+x = last_digit([3, 4, 2])
+print(x)
+print(int(str(x)[-1]))
