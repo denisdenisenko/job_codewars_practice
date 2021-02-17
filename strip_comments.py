@@ -44,21 +44,43 @@ def solution(string, markers):
 def solution2(string, markers):
     new_string = ""
     indexer = 0
-    for i in range(len(string)+1):
-        if indexer == len(string)-1:
+    if len(string) == 1:
+        if string[0] in markers:
+            return ''
+    if len(string) == 0:
+        return string
+    for i in range(len(string) + 1):
+        if indexer == len(string):
             print(new_string)
             return new_string
         if string[indexer] in markers:
+            if string[indexer] != '\n':
+                if (indexer+1)==len(string):
+                    return new_string
+                new_string = new_string.rstrip()
+
             while string[indexer] != '\n':
                 indexer += 1
                 if indexer == len(string) - 1:
+                    #new_string = new_string.rstrip()
                     print(new_string)
                     return new_string
         new_string += string[indexer]
         indexer += 1
 
     print(new_string)
+    new_string = new_string.rstrip()
     return new_string
 
 
-solution2("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
+#solution2("#", ["#", "!"])
+# solution2('oranges apples pears strawberries\noranges\noranges apples =\noranges strawberries watermelons strawberries lemons ^', [',', '#', "'", '!', '.', '@'])
+
+
+# solution2("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
+
+#solution2("\n§", ["#", "§"])
+
+#solution2('oranges\npears apples\n, avocados ? watermelons avocados', ['!', '-', '=', ',', '#', '@', '.', "'"])
+
+solution2("oranges ^\n'\npears\n' avocados lemons\ncherries", ['-', '.', ',', '^', '!', "'", '#'])
